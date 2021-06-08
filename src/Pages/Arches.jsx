@@ -1,9 +1,8 @@
 import React from "react";
 import Table from "../Components/Table/Table";
-import Chip from '@material-ui/core/Chip';
+
 import { makeStyles } from "@material-ui/core/styles";
-import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
-import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
+import axios from "axios";
 
 const useStyles = makeStyles(() => ({
     containerGlobal:{
@@ -40,6 +39,28 @@ const useStyles = makeStyles(() => ({
 
 export default function Queue() {
   const classes = useStyles();
+  const [refreshTable, setRefreshTable] = React.useState(true);
+  const [data, setData] = React.useState();
+
+  React.useEffect(() => {
+    const getData = () => {
+      axios({
+        method: "GET",
+        url: "https://pokeapi.co/api/v2/pokemon",
+      })
+        .then((res) => {
+          setData(res.data.results);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+
+    if (refreshTable === true) {
+      getData();
+      setRefreshTable(false);
+    }
+  }, [refreshTable]);
 
   return (
     <div className={classes.containerGlobal}>
@@ -56,9 +77,9 @@ export default function Queue() {
             <Chip className={classes.chipInfos} label="10 follows" icon={<PersonAddOutlinedIcon style={{ color: 'black' }}/>} size='small' />
           </div>
         </div>
-      </div>
-      <Table/> */}
-      
+      </div> */}
+      <Table data={data}/>
+
     </div>
   );
 }

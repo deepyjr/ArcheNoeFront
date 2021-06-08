@@ -2,29 +2,7 @@ import React from "react";
 import MUIDataTable from "mui-datatables";
 import axios from "axios";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
-function Table() {
-  const [refreshTable, setRefreshTable] = React.useState(true);
-  const [actions, setActions] = React.useState();
-
-  React.useEffect(() => {
-    const getActions = () => {
-      axios({
-        method: "GET",
-        url: "https://pokeapi.co/api/v2/pokemon",
-      })
-        .then((res) => {
-          setActions(res.data.results);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-
-    if (refreshTable === true) {
-      getActions();
-      setRefreshTable(false);
-    }
-  }, [refreshTable]);
+function Table(props) {
 
   const getMuiTheme = () =>
     createMuiTheme({
@@ -53,14 +31,14 @@ function Table() {
         },
         MuiToolbar: {
           root: {
-            backgroundColor: "#FFDE59",
-            color: "black",
+            backgroundColor: "#73ba9b",
+            color: "white",
           },
         },
         MuiTableFooter: {
           root: {
-            backgroundColor: "#FFDE59",
-            color: "black",
+            backgroundColor: "#73ba9b",
+            color: "white",
           },
         },
       },
@@ -105,8 +83,8 @@ function Table() {
     <div>
       <MuiThemeProvider theme={getMuiTheme()}>
         <MUIDataTable
-          title={"In comming actions"}
-          data={actions}
+          title={"Mes Arches"}
+          data={props.data}
           columns={columns}
           options={options}
         />

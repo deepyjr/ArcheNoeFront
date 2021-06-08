@@ -7,10 +7,7 @@ const initialState ={
     name:null,
     email:null,
     accessToken:null,
-    id:null,
     picture:null,
-    facebookPage:{},
-    instaPage:{}
 }
 
 function authReducer(state,action){
@@ -21,20 +18,7 @@ function authReducer(state,action){
                 name:action.payload.name,
                 email:action.payload.email,
                 accessToken:action.payload.accessToken,
-                id:action.payload.id,
                 picture: action.payload.picture,
-            }
-        }
-        case'facebookInfos':{
-            return{
-                ...state,
-                facebookPage:action.payload,
-            }
-        }
-        case'instaInfos':{
-            return{
-                ...state,
-                instaPage:action.payload,
             }
         }
 

@@ -8,6 +8,7 @@ import SideBarContent from './SideBarContent';
 import Dashboard from "../Pages/Dashboard";
 import Arches from "../Pages/Arches";
 import LandingPageCreateArches from "../Pages/LandingPageCreateArches";
+import LoadingPage from "../Pages/LoadingPage";
 
 const getMuiTheme = () =>
   createMuiTheme({
@@ -62,9 +63,10 @@ function Layout() {
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Switch>
-            <Route exact path="/" component={Dashboard} />
+            <Route exact path="/" component={Arches} />
             <Route exact path="/LandingNewArche" component={LandingPageCreateArches} />
             <Route exact path="/mesArches" component={Arches} />
+            <Route exact path="/LoadingPage" component={LoadingPage} />
           </Switch>
         </main>
       </div>
