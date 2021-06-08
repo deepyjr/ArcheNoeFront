@@ -11,6 +11,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import { PreferenceContext } from "../Store/PreferenceContext";
 import Badge from "@material-ui/core/Badge";
 import Avatar from '@material-ui/core/Avatar';
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -139,6 +140,7 @@ export default function MiniDrawer() {
               </Typography>
             </div>
             <div className={classes.sectionIcons}>
+              
               <IconButton
                 aria-label="show 17 new notifications"
                 color="inherit"
@@ -147,7 +149,9 @@ export default function MiniDrawer() {
                   <NotificationsIcon />
                 </Badge>
               </IconButton>
-              <Avatar className={classes.avatarIcon} alt="Remy Sharp" src="BlackWidow-EndgameProfile.jpg" />
+              <Link to="/ProfilPage" className={classes.queueLink}>
+                <Avatar className={classes.avatarIcon} alt="Remy Sharp" src="BlackWidow-EndgameProfile.jpg" />
+              </Link>
             </div>
           </div>
         </Toolbar>

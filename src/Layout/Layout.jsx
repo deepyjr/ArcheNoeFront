@@ -9,6 +9,8 @@ import Dashboard from "../Pages/Dashboard";
 import Arches from "../Pages/Arches";
 import LandingPageCreateArches from "../Pages/LandingPageCreateArches";
 import LoadingPage from "../Pages/LoadingPage";
+import ProfilPage from "../Pages/ProfilPage";
+import NewArche from "../Pages/NewArche";
 
 const getMuiTheme = () =>
   createMuiTheme({
@@ -67,6 +69,8 @@ function Layout() {
             <Route exact path="/LandingNewArche" component={LandingPageCreateArches} />
             <Route exact path="/mesArches" component={Arches} />
             <Route exact path="/LoadingPage" component={LoadingPage} />
+            <Route exact path="/ProfilPage" component={ProfilPage} />
+            <Route exact path="/NewArche" component={NewArche} />
           </Switch>
         </main>
       </div>

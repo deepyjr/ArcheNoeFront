@@ -6,6 +6,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(() => createStyles({
     root: {
@@ -34,7 +35,7 @@ function LandingPageCreateArches() {
     const classes = useStyles();
 
   const linkTable = [
-    { name: `Nouvelle arche`, description: 'Créer une nouvelle arche.', link: '' }, // link a remplir comme /chemin
+    { name: `Nouvelle arche`, description: 'Créer une nouvelle arche.', link: '/NewArche' }, // link a remplir comme /chemin
     { name: `Nouvel utilisateur`, description: "Créer un nouveau profil utilisateur.", link: '' },
     { name: `Modifier une arche`, description: "Modifier une arche existante.", link: '' },
   ];
@@ -55,7 +56,10 @@ function LandingPageCreateArches() {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small" href={value.link}>Learn More</Button>
+              <Link to={value.link} >
+                <Button size="small">Learn More</Button>
+              </Link>
+               
               </CardActions>
             </Card>
           </Grid>

@@ -202,8 +202,8 @@ export default function MiniDrawer() {
                   {sideBarItem("LandingNewArche", <QueueIcon />, "Créer nouvelle Arche")}
                 </div>
               )}
-              {sideBarItem("", <HouseOutlinedIcon />, "Dashboard")}
-              {sideBarItem("like", <FavoriteBorderOutlinedIcon />, "Like")}
+              {sideBarItem("", <HouseOutlinedIcon />, "Mes Arches")}
+              {/* {sideBarItem("like", <FavoriteBorderOutlinedIcon />, "Like")}
               {sideBarItem(
                 "follow-unfollow",
                 <PersonAddOutlinedIcon />,
@@ -213,7 +213,7 @@ export default function MiniDrawer() {
                 "my-follow",
                 <LocalAtmRoundedIcon />,
                 "My followers"
-              )}
+              )} */}
             </div>
           </div>
         </div>

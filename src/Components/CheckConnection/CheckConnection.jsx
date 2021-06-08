@@ -33,10 +33,12 @@ function CheckConnection() {
   React.useEffect(() => {
     if (checked) {
       setBody(<BrowserRouter><Layout/></BrowserRouter>);
+
     } else if (checked === false || authState.token === null) {
       setBody(<Login />);
     } else {
-      setBody(<LoadingPage />);
+      setBody(<BrowserRouter><Layout/></BrowserRouter>);
+
     }
   }, [authState.token, checked]);
 
