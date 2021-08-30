@@ -1,32 +1,13 @@
 import React from "react";
 import { AuthContext } from "../Store/AuthContext";
-import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import Link from "@material-ui/core/Link";
 import Paper from "@material-ui/core/Paper";
-import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import axios from 'axios';
 import CardArche from "../Components/Card/CardArche";
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -59,12 +40,12 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-  CardArche : {
+  CardArche: {
     display: "flex",
     flexDirection: "column",
-    padding :" 10px 30px "
+    padding: " 10px 30px "
   },
-  CardArcheItem:{
+  CardArcheItem: {
     margin: "10px 0 0 0"
   },
 }));
@@ -73,76 +54,74 @@ const useStyles = makeStyles((theme) => ({
 function NewArche() {
   const classes = useStyles();
   const { authDispatch } = React.useContext(AuthContext);
-  const [user, setUser ] = React.useState({
-      username:'',
-      password:''
+  const [arche, setArche] = React.useState({
+    id:'',
+    name: '',
+    description: ''
+    
   });
-  const [submit, setSubmit ] = React.useState(false);
+  const [archeContent, setArcheContent] = React.useState([<div className={classes.CardArcheItem}>
+    <CardArche id='10' name="Arche de Paris" description="Ceci est l'arche de paris et je suis sa description"></CardArche>
+  </div>]);
+  const [submit, setSubmit] = React.useState(false);
 
-   React.useEffect( ()=>{
-        const loginUser = () => {
-            axios({
-                method:'post',
-                url:'',
-                data:user
-            })
-            .then((res) => {
-                authDispatch({type:'login',payload:res.data})
-                // console.log('test',res.data.accessToken)
-            })
-            .catch((err)=>{
-                console.log(err)
-            })
-        }
+  React.useEffect( ()=>{
+    const newArche = () => {
+      let archeExistante = [
+        { name : arche.name , description :arche.description }
+      ]
+        archeExistante.map((value,id)=>{
+         archeContent.push(<div key={id} className={classes.CardArcheItem}>
+          <CardArche name={value.name} description={value.description}></CardArche>
+        </div>)
+      })
+    }
+    if(submit){
+      newArche()
+        setSubmit(false)
+    }
 
-        if(submit){
-            loginUser()
-            setSubmit(false)
-        }
-   }, [submit, user, authDispatch])
+
+}, [submit, arche])
 
   return (
     <div>
       <Grid container component="main" className={classes.root}>
         <CssBaseline />
-        
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <div className={classes.paper}>
             <Typography component="h1" variant="h5">
               Enregistrer une nouvelle Arche
             </Typography>
-            <form className={classes.form}         
-            onSubmit={ e => {
-            e.preventDefault();
-            setSubmit(true);
-        }}>
+            <form className={classes.form}
+              onSubmit={e => {
+                e.preventDefault();
+                setSubmit(true);
+              }}>
               <TextField
                 variant="outlined"
                 margin="normal"
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                id="name"
+                label="Entrez un nom d'arche"
+                name="name"
+                autoComplete="name"
                 autoFocus
-                onChange={e => setUser({...user, username: e.target.value})}
+                onChange={e => setArche({ ...arche, name: e.target.value })}
               />
               <TextField
                 variant="outlined"
                 margin="normal"
                 required
                 fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                onChange={e => setUser({...user, password: e.target.value})}
-              />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
+                name="description"
+                label="description"
+                type="description"
+                id="multiline-description"
+                autoComplete="description"
+                multiline
+                onChange={e => setArche({ ...arche, description: e.target.value })}
               />
               <Button
                 type="submit"
@@ -151,30 +130,14 @@ function NewArche() {
                 color="primary"
                 className={classes.submit}
               >
-                Sign In
+                Nouvelle Arche
               </Button>
-              <Box mt={5}>
-                <Copyright />
-              </Box>
+
             </form>
           </div>
         </Grid>
         <Grid className={classes.CardArche} item sm={3} md={7}>
-          <div className={classes.CardArcheItem}>
-            <CardArche></CardArche>
-          </div>
-          <div className={classes.CardArcheItem}>
-            <CardArche></CardArche>
-          </div>
-          <div className={classes.CardArcheItem}>
-            <CardArche></CardArche>
-          </div>
-          <div className={classes.CardArcheItem}>
-            <CardArche></CardArche>
-          </div>
-          <div className={classes.CardArcheItem}>
-            <CardArche></CardArche>
-          </div>
+          {archeContent}
         </Grid>
       </Grid>
     </div>

@@ -25,7 +25,7 @@ function Table(props) {
               color: "blue",
               cursor: "pointer",
             },
-            width: "25em",
+            width: "20em",
           },
         },
         MuiToolbar: {
@@ -44,15 +44,15 @@ function Table(props) {
     });
 
   const columns = [
-    // {
-    //   name: "id",
-    //   label: "id",
-    //   options: {
-    //     display: "excluded",
-    //     filter: false,
-    //     sort: false,
-    //   },
-    // },
+    {
+      name: "id",
+      label: "id",
+      options: {
+        display: "excluded",
+        filter: false,
+        sort: false,
+      },
+    },
     {
       name: "name",
       label: "Name",
@@ -62,8 +62,32 @@ function Table(props) {
       },
     },
     {
-      name: "url",
-      label: "URL",
+      name: "Type_of_Object",
+      label: "Type d'objet",
+      options: {
+        filter: false,
+        sort: false,
+      },
+    },
+    {
+      name: "state",
+      label: "Etat",
+      options: {
+        filter: false,
+        sort: false,
+      },
+    },
+    {
+      name: "description",
+      label: "Description",
+      options: {
+        filter: false,
+        sort: false,
+      },
+    },
+    {
+      name: "quantity",
+      label: "Quantité",
       options: {
         filter: false,
         sort: false,
