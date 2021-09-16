@@ -208,12 +208,12 @@ export default function MiniDrawer() {
                 "follow-unfollow",
                 <PersonAddOutlinedIcon />,
                 "Follow - Unfollow"
-              )}
-              {sideBarItem(
-                "my-follow",
-                <LocalAtmRoundedIcon />,
-                "My followers"
               )} */}
+              {sideBarItem(
+                "Users",
+                <PersonOutlineIcon />,
+                "Utilisateurs"
+              )}
             </div>
           </div>
         </div>

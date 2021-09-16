@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react'
 import MUIDataTable from "mui-datatables";
 import axios from "axios";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
-function TableStorage(props) {
-  const getMuiTheme = () =>
+function TableUsers(props) {
+    const getMuiTheme = () =>
     createMuiTheme({
       overrides: {
         MUIDataTableBodyRow: {
@@ -42,61 +42,59 @@ function TableStorage(props) {
         },
       },
     });
-
- 
     const columns = [
-      {
-        name: "id",
-        label: "id",
-        options: {
-          display: "excluded",
-          filter: false,
-          sort: false,
+        {
+          name: "id",
+          label: "id",
+          options: {
+            display: "excluded",
+            filter: false,
+            sort: false,
+          },
         },
-      },
-      {
-        name: "name",
-        label: "Name",
-        options: {
-          filter: true,
-          sort: true,
+        {
+          name: "Prénom",
+          label: "Prénom",
+          options: {
+            filter: true,
+            sort: true,
+          },
         },
-      },
-      {
-        name: "Type_of_Object",
-        label: "Type d'objet",
-        options: {
-          filter: false,
-          sort: false,
+        {
+          name: "Nom",
+          label: "Nom",
+          options: {
+            filter: false,
+            sort: false,
+          },
         },
-      },
-      {
-        name: "state",
-        label: "Etat",
-        options: {
-          filter: false,
-          sort: false,
+        {
+          name: "Arche",
+          label: "Arche",
+          options: {
+            filter: false,
+            sort: false,
+          },
         },
-      },
-      {
-        name: "description",
-        label: "Description",
-        options: {
-          filter: false,
-          sort: false,
+        {
+          name: "Localisation",
+          label: "Localisation",
+          options: {
+            filter: false,
+            sort: false,
+          },
         },
-      },
-      {
-        name: "quantity",
-        label: "Quantité",
-        options: {
-          filter: false,
-          sort: false,
+        {
+          name: "Salaire",
+          label: "Salaire",
+          options: {
+            filter: false,
+            sort: false,
+          },
         },
-      },
-    ];
-  
+      ];
 
+      
   const options = {
     print: false,
     filter: true,
@@ -108,7 +106,7 @@ function TableStorage(props) {
     <div>
       <MuiThemeProvider theme={getMuiTheme()}>
         <MUIDataTable
-          title={"Mes Arches"}
+          title={"Les Utilisateurs"}
           data={props.data}
           columns={columns}
           options={options}
@@ -116,6 +114,7 @@ function TableStorage(props) {
       </MuiThemeProvider>
     </div>
   );
+
 }
 
-export default TableStorage;
+export default TableUsers

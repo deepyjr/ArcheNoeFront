@@ -12,7 +12,7 @@ import LoadingPage from "../Pages/LoadingPage";
 import ProfilPage from "../Pages/ProfilPage";
 import NewArche from "../Pages/NewArche";
 import ArcheUnit from "../Pages/ArcheUnit";
-
+import Users from "../Pages/Users";
 const getMuiTheme = () =>
   createMuiTheme({
     overrides: {
@@ -73,6 +73,7 @@ function Layout() {
             <Route exact path="/LoadingPage" component={LoadingPage} />
             <Route exact path="/ProfilPage" component={ProfilPage} />
             <Route exact path="/NewArche" component={NewArche} />
+            <Route exact path="/Users" component={Users} />
             
           </Switch>
         </main>
