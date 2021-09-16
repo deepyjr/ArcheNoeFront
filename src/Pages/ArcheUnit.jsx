@@ -2,7 +2,7 @@ import React from 'react';
 import CircleGraphs from '../Components/Graphs/CircleGraph';
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from '@material-ui/core/styles';
-import TableStockage from '../Components/Table/TableStorage';
+import TableStockageArche from '../Components/Table/TableStorageArche';
 import {
     useParams
 } from "react-router-dom";
@@ -49,7 +49,7 @@ function ArcheUnit() {
                 <CircleGraphs></CircleGraphs>
             </Grid>
             <div className={classes.containerGlobal}>
-                <TableStockage data={storage}></TableStockage>
+                <TableStockageArche data={storage}></TableStockageArche>
             </div>
         </div>
     )

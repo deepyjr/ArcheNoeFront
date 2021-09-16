@@ -7,12 +7,14 @@ import { makeStyles } from "@material-ui/core/styles";
 import SideBarContent from './SideBarContent';
 import Dashboard from "../Pages/Dashboard";
 import Arches from "../Pages/Arches";
-import LandingPageCreateArches from "../Pages/LandingPageCreateArches";
 import LoadingPage from "../Pages/LoadingPage";
 import ProfilPage from "../Pages/ProfilPage";
 import NewArche from "../Pages/NewArche";
 import ArcheUnit from "../Pages/ArcheUnit";
 import Users from "../Pages/Users";
+import Material from "../Pages/Material";
+
+
 const getMuiTheme = () =>
   createMuiTheme({
     overrides: {
@@ -40,6 +42,8 @@ const getMuiTheme = () =>
       },
     },
   });
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -67,14 +71,13 @@ function Layout() {
           <div className={classes.appBarSpacer} />
           <Switch>
             <Route exact path="/" component={Arches} />
-            <Route exact path="/LandingNewArche" component={LandingPageCreateArches} />
             <Route exact path="/mesArches" component={Arches} />
             <Route exact path="/mesArches/:id" component={ArcheUnit} />
             <Route exact path="/LoadingPage" component={LoadingPage} />
             <Route exact path="/ProfilPage" component={ProfilPage} />
             <Route exact path="/NewArche" component={NewArche} />
             <Route exact path="/Users" component={Users} />
-            
+            <Route exact path="/Material" component={Material} />
           </Switch>
         </main>
       </div>

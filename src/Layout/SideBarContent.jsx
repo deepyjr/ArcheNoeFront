@@ -18,6 +18,7 @@ import HouseOutlinedIcon from "@material-ui/icons/HouseOutlined";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import QueueIcon from "@material-ui/icons/Queue";
 import PlaylistAddIcon from "@material-ui/icons/PlaylistAdd";
+import FolderIcon from '@material-ui/icons/Folder';
 
 const drawerWidth = 240;
 
@@ -188,7 +189,7 @@ export default function MiniDrawer() {
           <div className={classes.menuList}>
             <div className={classes.menuListTop}>
               {open ? (
-                <Link to="/LandingNewArche" className={classes.queueLink}>
+                <Link to="/NewArche" className={classes.queueLink}>
                   <CustomButton
                     mb="15px"
                     pr="10px"
@@ -199,16 +200,16 @@ export default function MiniDrawer() {
                 </Link>
               ) : (
                 <div style={{ marginBottom: "15px" }}>
-                  {sideBarItem("LandingNewArche", <QueueIcon />, "Créer nouvelle Arche")}
+                  {sideBarItem("NewArche", <QueueIcon />, "Créer nouvelle Arche")}
                 </div>
               )}
               {sideBarItem("", <HouseOutlinedIcon />, "Mes Arches")}
-              {/* {sideBarItem("like", <FavoriteBorderOutlinedIcon />, "Like")}
-              {sideBarItem(
+              {sideBarItem("Material", <FolderIcon />, "Gérer le Matériel")}
+              {/* {sideBarItem(
                 "follow-unfollow",
                 <PersonAddOutlinedIcon />,
                 "Follow - Unfollow"
-              )} */}
+              )} */} 
               {sideBarItem(
                 "Users",
                 <PersonOutlineIcon />,

@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   },
 });
 
-function CardArche(props) {
+function CardMaterial(props) {
     const classes = useStyles();
     const bull = <span className={classes.bullet}>•</span>;
     return (
@@ -35,14 +35,14 @@ function CardArche(props) {
           {props.name}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          localisation : 
+        Quantité : {props.quantité}
         </Typography>
         <Typography variant="body2" component="p">
           {props.description}
         </Typography>
       </CardContent>
       <CardActions>
-      <Link to={'/mesArches/' + props.id} >
+      <Link to={'/Material/' + props.id} >
         <Button size="small">Learn More</Button>
       </Link>
 
@@ -52,4 +52,4 @@ function CardArche(props) {
     )
 }
 
-export default CardArche
+export default CardMaterial
