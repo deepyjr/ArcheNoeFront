@@ -13,7 +13,7 @@ import NewArche from "../Pages/NewArche";
 import ArcheUnit from "../Pages/ArcheUnit";
 import Users from "../Pages/Users";
 import Material from "../Pages/Material";
-
+import MaterialUnit from "../Pages/MaterialUnit";
 
 const getMuiTheme = () =>
   createMuiTheme({
@@ -78,6 +78,7 @@ function Layout() {
             <Route exact path="/NewArche" component={NewArche} />
             <Route exact path="/Users" component={Users} />
             <Route exact path="/Material" component={Material} />
+            <Route exact path="/Material/:id" component={MaterialUnit} />
           </Switch>
         </main>
       </div>
