@@ -26,14 +26,19 @@ const useStyles = makeStyles({
 
 });
 
-
 function ArcheUnit() {
     let { id } = useParams();
     const classes = useStyles();
     const [storage, setStorage] = React.useState([
-        { name: "cochons", Type_of_Object: "Animal", state: "Stocké", description: "description test pour 1 item ", pictures: "", quantity: 14 },
-        { name: "embryons vaches ", Type_of_Object: "Embryons", state: "Stocké", description: "description test pour 1 item ", pictures: "", quantity: 4 },
-        { name: "Table", Type_of_Object: "Material", state: "Stocké", description: "description test pour 1 item ", pictures: "", quantity: 1 }
+        { name: "Cochons", Type_of_Object: "Animal", state: "Stocké", description: "Cochon BIO / Vente régionale et charcuterie locale", pictures: "", quantity: 14 },
+        { name: "Embryons vaches ", Type_of_Object: "Embryons", state: "Stocké", description: "Embryons race Charolaise", pictures: "", quantity: 4 },
+        { name: "Chaise", Type_of_Object: "Material", state: "Stocké", description: "Chaise de bureau bois acacia (Blanc / Marron)", pictures: "", quantity: 1 },
+        { name: "Lumière 120 Lumens", Type_of_Object: "Material", state: "Stocké", description: "Lampe extérieure jour / nuit", pictures: "", quantity: 7 },
+        { name: "Farine de Blé", Type_of_Object: "Nourriture", state: "Stocké", description: "Farine pour Bétail", pictures: "", quantity: 500 },
+        { name: "Puces Radar", Type_of_Object: "Material", state: "Stocké", description: "Traqueur pour les oiseaux", pictures: "", quantity: 251 },
+        { name: "Couteaux à Viande", Type_of_Object: "Outil", state: "Stocké", description: "Matériel de cuisine", pictures: "", quantity: 21 },
+        { name: "Capsules Nutritives", Type_of_Object: "Nourritures", state: "Stocké", description: "Rations de secours pour bovins si manque de nourriture", pictures: "", quantity: 1200 },
+        { name: "Panneaux de Verres", Type_of_Object: "Material", state: "Non disponible", description: "Panneaux interfaçant le contact Homme - Animal", pictures: "", quantity: 0 },
     ]);
     return (
         <div>
@@ -49,7 +54,7 @@ function ArcheUnit() {
                 <CircleGraphs></CircleGraphs>
             </Grid>
             <div className={classes.containerGlobal}>
-                <TableStockageArche data={storage}></TableStockageArche>
+                <TableStockageArche data={storage.sort(() => .5 - Math.random()).slice(0,3)}></TableStockageArche>
             </div>
         </div>
     )

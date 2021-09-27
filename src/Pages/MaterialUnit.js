@@ -62,22 +62,22 @@ function MaterialUnit() {
                     <p><strong>Quantité :</strong> 12</p>
                     <h2>Effectuer un transport</h2>
                     <FormControl sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="demo-simple-select-helper-label">Age</InputLabel>
+        <InputLabel id="demo-simple-select-helper-label">Durée</InputLabel>
         <Select
           labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
           value={age}
-          label="Age"
+          label="Durée"
           onChange={handleChange}
         >
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value={10}>10 jours</MenuItem>
+          <MenuItem value={20}>20 jours</MenuItem>
+          <MenuItem value={30}>30 jours</MenuItem>
         </Select>
-        <FormHelperText>With label + helper text</FormHelperText>
+        <FormHelperText>Sélectionnez une estimation de trajet</FormHelperText>
       </FormControl>
                 </Grid>
             </Grid>

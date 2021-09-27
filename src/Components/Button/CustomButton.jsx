@@ -29,7 +29,6 @@ export default function CustomButton(props) {
         {props.icon}
         {props.content}
       </ColorButton>
-      
     </div>
   );
 }

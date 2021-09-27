@@ -108,7 +108,7 @@ function TableStorage(props) {
     <div>
       <MuiThemeProvider theme={getMuiTheme()}>
         <MUIDataTable
-          title={"Mes Arches"}
+          title={"Matériel stocké dans l'arche"}
           data={props.data}
           columns={columns}
           options={options}

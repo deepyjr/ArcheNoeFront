@@ -1,5 +1,6 @@
 import React from "react";
 import MUIDataTable from "mui-datatables";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 function Table(props) {
@@ -14,6 +15,10 @@ function Table(props) {
             "&:nth-child(odd)": {
               backgroundColor: "#EEEEEE",
             },
+            "&:hover": {
+              backgroundColor: "#73ba9b",
+              color: "white"
+            }
           },
         },
         MUIDataTableBodyCell: {
@@ -25,7 +30,7 @@ function Table(props) {
               color: "blue",
               cursor: "pointer",
             },
-            width: "25em",
+            width: "15em",
           },
         },
         MuiToolbar: {
@@ -42,7 +47,7 @@ function Table(props) {
         },
       },
     });
-
+  const history = useHistory();
   const columns = [
     // {
     //   name: "id",
@@ -62,11 +67,35 @@ function Table(props) {
       },
     },
     {
-      name: "url",
-      label: "URL",
+      name: "description",
+      label: "Description",
       options: {
-        filter: false,
-        sort: false,
+        filter: true,
+        sort: true,
+      },
+    },
+    {
+      name: "mainAddress",
+      label: "Addresse Principale",
+      options: {
+        filter: true,
+        sort: true,
+      },
+    },
+    {
+      name: "postalCode",
+      label: "Code Postal",
+      options: {
+        filter: true,
+        sort: true,
+      },
+    },
+    {
+      name: "city",
+      label: "Ville",
+      options: {
+        filter: true,
+        sort: true,
       },
     },
   ];
@@ -76,6 +105,9 @@ function Table(props) {
     filter: true,
     viewColumns: false,
     filterType: 'checkbox',
+    onRowClick: (data, rowMeta) => {
+      history.replace('/mesArches/idTemporaire')
+    },
   };
 
   return (

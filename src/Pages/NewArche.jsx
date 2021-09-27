@@ -8,6 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import CardArche from "../Components/Card/CardArche";
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,34 +56,90 @@ function NewArche() {
   const classes = useStyles();
   const { authDispatch } = React.useContext(AuthContext);
   const [arche, setArche] = React.useState({
-    id:'',
     name: '',
-    description: ''
-    
+    description: '',
+    mainAddress: '',
+    postalCode: null,
+    city: ''
+
   });
   const [archeContent, setArcheContent] = React.useState([<div className={classes.CardArcheItem}>
     <CardArche id='10' name="Arche de Paris" description="Ceci est l'arche de paris et je suis sa description"></CardArche>
   </div>]);
   const [submit, setSubmit] = React.useState(false);
+  const [refreshTable, setRefreshTable] = React.useState(true);
 
-  React.useEffect( ()=>{
+
+
+  React.useEffect(() => {
     const newArche = () => {
-      let archeExistante = [
-        { name : arche.name , description :arche.description }
-      ]
-        archeExistante.map((value,id)=>{
-         archeContent.push(<div key={id} className={classes.CardArcheItem}>
-          <CardArche name={value.name} description={value.description}></CardArche>
-        </div>)
+      axios({
+        method: "POST",
+        url: `http://localhost:5000/api/arch`,
+        data: arche
       })
+        .then((res) => {
+          axios({
+            method: "GET",
+            url: `http://localhost:5000/api/arch/GetAll`,
+          })
+            .then((res) => {
+              let temp = [<div className={classes.CardArcheItem}>
+                <CardArche id='10' name="Arche de Paris" description="Ceci est l'arche de paris et je suis sa description"></CardArche>
+              </div>];
+              let id = 1;
+              res.data.forEach(element => {
+                temp.push(<div key={id} className={classes.CardArcheItem}>
+                  <CardArche name={element.name} description={element.description} mainAddress={element.mainAddress} postalCode={element.postalCode} city={element.city}></CardArche>
+                </div>)
+                id = id + 1;
+              })
+              setArcheContent(temp);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
     }
-    if(submit){
+    if (submit) {
       newArche()
-        setSubmit(false)
+      setSubmit(false)
     }
 
 
-}, [submit, arche])
+  }, [submit, arche])
+
+  React.useEffect(() => {
+    const getArchs = () => {
+      axios({
+        method: "GET",
+        url: "http://localhost:5000/api/arch/GetAll",
+      })
+        .then((res) => {
+          let temp = [];
+          let id = 1;
+          res.data.forEach(element => {
+            temp.push(<div key={id} className={classes.CardArcheItem}>
+              <CardArche name={element.name} description={element.description} mainAddress={element.mainAddress} postalCode={element.postalCode} city={element.city}></CardArche>
+            </div>)
+            id = id + 1;
+          })
+          setArcheContent(temp);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+
+    if (refreshTable === true) {
+      getArchs();
+      setRefreshTable(false);
+    }
+  }, [refreshTable]);
 
   return (
     <div>
@@ -94,7 +151,7 @@ function NewArche() {
               Enregistrer une nouvelle Arche
             </Typography>
             <form className={classes.form}
-              onSubmit={e => {
+              onSubmit={(e) => {
                 e.preventDefault();
                 setSubmit(true);
               }}>
@@ -116,12 +173,50 @@ function NewArche() {
                 required
                 fullWidth
                 name="description"
-                label="description"
+                label="Description"
                 type="description"
                 id="multiline-description"
                 autoComplete="description"
                 multiline
                 onChange={e => setArche({ ...arche, description: e.target.value })}
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="mainAddress"
+                label="Adresse principale"
+                id="multiline-mainAddress"
+                autoComplete="mainAddress"
+                multiline
+                onChange={e => setArche({ ...arche, mainAddress: e.target.value })}
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="postalCode"
+                label="Code Postal"
+                id="multiline-postalCode"
+                autoComplete="postalCode"
+                type="number"
+                multiline
+                onChange={e => setArche({ ...arche, postalCode: parseInt(e.target.value) })}
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="city"
+                label="Ville"
+                type="city"
+                id="multiline-city"
+                autoComplete="city"
+                multiline
+                onChange={e => setArche({ ...arche, city: e.target.value })}
               />
               <Button
                 type="submit"

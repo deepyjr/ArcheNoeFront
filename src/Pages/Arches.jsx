@@ -46,10 +46,10 @@ export default function Queue() {
     const getData = () => {
       axios({
         method: "GET",
-        url: "https://pokeapi.co/api/v2/pokemon",
+        url: "http://localhost:5000/api/arch/GetAll",
       })
         .then((res) => {
-          setData(res.data.results);
+          setData(res.data);
         })
         .catch((err) => {
           console.log(err);

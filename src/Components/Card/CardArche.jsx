@@ -25,31 +25,31 @@ const useStyles = makeStyles({
 });
 
 function CardArche(props) {
-    const classes = useStyles();
-    const bull = <span className={classes.bullet}>•</span>;
-    return (
-        <div>
-             <Card className={classes.root} variant="outlined">
-      <CardContent>
-        <Typography variant="h5" component="h2">
-          {props.name}
-        </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          localisation : 
-        </Typography>
-        <Typography variant="body2" component="p">
-          {props.description}
-        </Typography>
-      </CardContent>
-      <CardActions>
-      <Link to={'/mesArches/' + props.id} >
-        <Button size="small">Learn More</Button>
-      </Link>
+  const classes = useStyles();
+  const bull = <span className={classes.bullet}>•</span>;
+  return (
+    <div>
+      <Card className={classes.root} variant="outlined">
+        <CardContent>
+          <Typography variant="h5" component="h2">
+            {props.name}
+          </Typography>
+          <Typography className={classes.pos} color="textSecondary">
+            Localisation : {props.mainAddress + " " + props.postalCode + " " + props.city}
+          </Typography>
+          <Typography variant="body2" component="p">
+            {props.description}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Link to={'/mesArches/idTemporaire'} >
+            <Button size="small">Learn More</Button>
+          </Link>
 
-      </CardActions>
-    </Card>
-        </div>
-    )
+        </CardActions>
+      </Card>
+    </div>
+  )
 }
 
 export default CardArche
